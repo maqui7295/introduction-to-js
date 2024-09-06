@@ -12,30 +12,30 @@
     <p id="post-content"></p>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', (evt) => {
-            // evt.preventDefault();
+        // window.addEventListener('DOMContentLoaded', (evt) => {
+        //     // evt.preventDefault();
 
-            const h3 = document.querySelector('#post-title');
-            const p = document.querySelector('#post-content');
+        //     const h3 = document.querySelector('#post-title');
+        //     const p = document.querySelector('#post-content');
 
-            axios.get('http://127.0.0.1:8080').then(({ data }) => {
-                const { post } = data;
+        //     axios.get('http://127.0.0.1:8080').then(({ data }) => {
+        //         const { post } = data;
 
-                // const p = document.createElement('p');
-                // p.style.backgroundColor = "red";
-                // p.style.color = "white";
-                // p.style.padding = '10px';
+        //         // const p = document.createElement('p');
+        //         // p.style.backgroundColor = "red";
+        //         // p.style.color = "white";
+        //         // p.style.padding = '10px';
 
-                h3.textContent = post.title
-                p.textContent = post.body
+        //         h3.textContent = post.title
+        //         p.textContent = post.body
 
-                // document.body.appendChild(p);
+        //         // document.body.appendChild(p);
                 
-            }).catch(err => {
+        //     }).catch(err => {
 
-                p.textContent = 'Server error'
-            })
-        })
+        //         p.textContent = 'Server error'
+        //     })
+        // })
     </script>
 </body>
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* input[name="age"] {
+            padding: 50px;
+        } */
+
+        /* span {
+            display: none;
+            color: red;
+        } */
+
+        body input {
+
+        }
+
+        body > input {
+
+        }
+
+        input[name="age"] + span {
+            
+        }
+    </style>
+</head>
+
+<body>
+    <form action="*">
+        <input name="age" type="number" placeholder="Enter your age" required>
+        <input name="height" type="text" placeholder="Enter your height in meters" required>
+        <br>
+        <span style="color: red; display: none;">Enter a valid height.</span>
+        <br>
+        <button>submit</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('form')
+
+        form.addEventListener('submit', function(evt) {
+            evt.preventDefault();
+
+            // console.log(form.elements);
+            // console.log(form.children);
+
+            // console.log(form.age);
+            
+            // validation
+            let height = Number.parseFloat(form.height.value)
+
+            let span = document.querySelector('span')
+
+            if (Number.isNaN(height)) {
+                span.style.display = 'inline';
+                span.textContent = `${span.textContent} You entered "${form.height.value}" instead!`
+                return;
+            } else {
+                span.style.display = 'none'; 
+            }
+            
+            // let age = form.querySelector('input[name="age"]')
+            // let height = form.querySelector('input[name="height"]')
+            
+
+            // evt.target.submit()
+            form.submit();
+        })
+    </script>
+</body>
+
+</html>
