@@ -22,7 +22,7 @@ log(2 + 3)
 log(2 - 3)
 log(3 / 2)
 log(2 * 3)
-log(3 % 2) // modulo operator
+log(3 % 2) // modulo operator (remainder division)
 log(10 % 4) // modulo operator
 
 // comparison - comparison operators
@@ -333,7 +333,7 @@ var r;
 let wizard = "a", fish = "b";
 
 
-// scoping
+// Variable scoping (Lexical scoping)
 // if, else, for, while 
 {
     var anotherAnimal = "Fish"
@@ -343,6 +343,7 @@ log(anotherAnimal)
 
 let arr = [1, 2, 3, 4, 5]
 
+// index escapes the for loop scope since it was defined with var
 for (var index = 0; index < arr.length; index++) {
     const element = arr[index];
     log(element)
@@ -372,12 +373,14 @@ log(humanAgain)
 log(human)
 log(humanAgain)
 
-for (let i = 0; i < arr.length; i++) {
-    const element = arr[i];
+
+// Here, index is scoped to the for loop
+for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
     log(element)
 }
 
-// log(i)
+// log(index) this fails
 
 function sayHello(name) {
   var color = "red"
@@ -392,12 +395,21 @@ function sayHello(name) {
 // continue from here
 function sayHelloAgain(name) {
   var color = "red"
+ 
+//   const human = 1;
+//   let humanAgain = 2;
 
-  human = 1
+//   human = 1 error
   humanAgain = 2;
   
   log(color, human, humanAgain);
   console.log(`My name is ${name}`);
+
+  name = "Mary Doe"
+
+  log(`Name is now ${name}`)
+
+//   fullName = "Theo"
 }
 
 // log(color)
@@ -405,3 +417,29 @@ sayHello()
 sayHello(fullName)
 
 sayHelloAgain(fullName)
+
+log("Logging the original fullname", fullName)
+
+log(human)
+log(humanAgain)
+
+
+// [1, 2, 3, 4, 5]
+
+4 % 3
+
+log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(function(num){
+    return num % 5 === 0
+}))
+
+
+// Exercise 
+const dirtyString = `
+yuieiori The jume; 
+
+
+`
+
+const cleanstring = '' 
+
+log(cleanstring === dirtyString);

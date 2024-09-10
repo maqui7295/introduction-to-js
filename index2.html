@@ -43,9 +43,8 @@
     <script>
         const form = document.querySelector('form')
 
-        form.addEventListener('submit', function(evt) {
+        function handleSubmit(evt) {
             evt.preventDefault();
-
             // console.log(form.elements);
             // console.log(form.children);
 
@@ -70,7 +69,11 @@
 
             // evt.target.submit()
             form.submit();
-        })
+        }
+
+        form.addEventListener('submit', handleSubmit)
+
+        form.removeEventListener('submit', handleSubmit)
     </script>
 </body>
 
