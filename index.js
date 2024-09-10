@@ -138,7 +138,7 @@ log(+"234")
 log(Number.isInteger("123"))
 log(Number.isInteger(+"234"))
 
-+"234"
+    + "234"
 log(Number.parseInt("123.23"))
 log(Number.parseFloat("123"))
 
@@ -277,12 +277,12 @@ log(Number.isNaN(n))
 // statement, expressions, variables
 
 // let statement -> let variableName = expression;
-let something = 2 + 2; 
+let something = 2 + 2;
 let z = 2 + 3;
 
 // function declaration/statement
 // function name(params) {
-    
+
 // }
 
 // function call expression
@@ -293,7 +293,7 @@ log(age);
 
 // if Statement
 // if (condition) {
-    
+
 // }
 
 log(animal)
@@ -383,33 +383,33 @@ for (let index = 0; index < arr.length; index++) {
 // log(index) this fails
 
 function sayHello(name) {
-  var color = "red"
+    var color = "red"
 
-  let human = 1
-  let humanAgain = 2;
-  
-  log(color, human, humanAgain);
-  console.log(`My name is ${name}`);
+    let human = 1
+    let humanAgain = 2;
+
+    log(color, human, humanAgain);
+    console.log(`My name is ${name}`);
 }
 
 // continue from here
 function sayHelloAgain(name) {
-  var color = "red"
- 
-//   const human = 1;
-//   let humanAgain = 2;
+    var color = "red"
 
-//   human = 1 error
-  humanAgain = 2;
-  
-  log(color, human, humanAgain);
-  console.log(`My name is ${name}`);
+    //   const human = 1;
+    //   let humanAgain = 2;
 
-  name = "Mary Doe"
+    //   human = 1 error
+    humanAgain = 2;
 
-  log(`Name is now ${name}`)
+    log(color, human, humanAgain);
+    console.log(`My name is ${name}`);
 
-//   fullName = "Theo"
+    name = "Mary Doe"
+
+    log(`Name is now ${name}`)
+
+    //   fullName = "Theo"
 }
 
 // log(color)
@@ -428,7 +428,7 @@ log(humanAgain)
 
 4 % 3
 
-log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(function(num){
+log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(function (num) {
     return num % 5 === 0
 }))
 
@@ -439,7 +439,157 @@ yuieiori The jume;
 
 
 `
+log(dirtyString)
+log(dirtyString.trim())
 
-const cleanstring = '' 
+const cleanstring = dirtyString.trim().replace("yuieiori", "").replace("jume;", "").trim()
 
-log(cleanstring === dirtyString);
+log(cleanstring)
+
+log(cleanstring === 'The');
+
+
+// ========================= Arrays ======================== 
+// creation
+// operations
+function add(num1, num2) {
+    return 2 + 2;
+}
+
+const myFavoriteColors = ["red", "blue", "green", "yellow"]
+const myMixedList = [log, 1, "rtyrie", add(2, 2), { name: "John Doe" }, [1, 2, 3]]
+const myFavoriteColors2 = "red blue green yellow".split(' ')
+
+log(myFavoriteColors, myFavoriteColors2)
+log(myMixedList)
+
+let emptyArray = []
+
+let prospectArray = Array(100)
+
+// Array.from() Look into the usage of the function
+
+// operations
+log(myFavoriteColors.length) // check the length
+
+const secondBestColors = ["purple", "magenta"]
+
+// concatenation using concat method
+const allColors = myFavoriteColors.concat(secondBestColors)
+
+log(allColors)
+
+// concatenation using the spread operator
+const allColors2 = [...myFavoriteColors, ...secondBestColors]
+
+log(allColors2)
+
+// retrieving the elements of an array - indexing and destructuring
+
+// indexing
+log(myFavoriteColors[0])
+log(allColors[3])
+log(allColors.at(-1))
+log(allColors.at(0))
+
+// destructuring
+let [colorOne, colorTwo] = secondBestColors
+
+log(secondBestColors)
+
+log(`The first color is ${colorOne}\nThe second color is ${colorTwo}`)
+
+let [red, blue, ...theRestColors] = allColors
+
+log(red)
+log(theRestColors)
+
+// Looping through an array
+log("Using For loop")
+for (let index = 0; index < allColors.length; index++) {
+    const color = allColors[index];
+    log(`The color "${color}" is at index ${index}!`)
+}
+
+log("Using Foreach")
+allColors.forEach(function (color, index) {
+    log(`The color "${color}" is at index ${index}!`)
+})
+
+// using for of loop
+for (const color of allColors) {
+    log(`The color is "${color}"`)
+}
+
+
+// Array methods 
+log(myFavoriteColors2)
+myFavoriteColors2.push("black")
+
+log(myFavoriteColors2)
+
+let bl = myFavoriteColors2.pop()
+
+myFavoriteColors2.pop()
+
+log(myFavoriteColors2)
+log(bl)
+
+log(myFavoriteColors)
+
+log(myFavoriteColors.shift())
+
+log(myFavoriteColors)
+
+myFavoriteColors.unshift("red")
+
+log(myFavoriteColors)
+
+
+const lenColors = myFavoriteColors.map(function (color) {
+    return color.length
+})
+
+log(lenColors)
+
+const myFavoriteNumbers = "1 2 3 4 5 6 7 8 9 10".split(' ').map(function (num) {
+    return +num
+})
+
+const squaredNumbers = myFavoriteNumbers.map(function (val) {
+    return val * val
+})
+
+log(myFavoriteNumbers)
+log(squaredNumbers)
+
+// filter
+
+log(
+    // collect values greater than 16
+    squaredNumbers.filter(function (value) {
+        return value > 16
+    }),
+
+    "\n",
+
+    // Collect only multiples of 5
+    squaredNumbers.filter(function (value) {
+        return value % 5 === 0
+    }),
+
+)
+
+// prospectArray created above
+log(prospectArray)
+
+prospectArray[0] = 23
+prospectArray[1] = 23
+prospectArray[99] = 200
+
+log(prospectArray)
+
+prospectArray.fill(1)
+
+log(prospectArray)
+
