@@ -101,7 +101,7 @@ let age2 = null;
 log(age)
 log(age2)
 
-console.log(typeof age);
+// console.log(typeof age);
 console.log(typeof age2);
 
 const person = { name: 'John Doe' }
@@ -504,6 +504,11 @@ let [red, blue, ...theRestColors] = allColors
 log(red)
 log(theRestColors)
 
+let [[first, _], bb] = [[1, 2], [3, 4]]
+
+log(first)
+log(bb)
+
 // Looping through an array
 log("Using For loop")
 for (let index = 0; index < allColors.length; index++) {
@@ -593,3 +598,224 @@ prospectArray.fill(1)
 
 log(prospectArray)
 
+
+let userNames = ["John Doe", "Peter Griffin", "John Lock", "Mary Doe", "john Gerald"]
+
+const toRemove = "John"
+
+let remainingUsers = userNames.filter((name) => {
+    return !name.toLowerCase().includes(toRemove.toLowerCase())
+})
+
+log(remainingUsers)
+
+
+// ========================= Objects and Map =================================
+// creation 
+let emptyObj = {};
+
+// 1. Using object literal {}
+let employee = {
+    name: 'John Doe',
+    age: 45,
+    height: 1.86,
+    hobbies: ['Swimming', 'Skiing', 'Hockey'],
+
+    describe: function () {
+        log(`My name is ${this.name} and I am ${this.age} years old`);
+        log(`My hobbies are ${this.hobbies.join(' and ')}`)
+    },
+
+    describe2() {
+        log(`My name is ${this.name} and I am ${this.age} years old`);
+        log(`My hobbies are ${this.hobbies.join(' and ')}`)
+    },
+
+    "work-life": "balanced"
+}
+
+// Using Object.create method
+let employee2 = Object.create(null);
+
+let database = { users: userNames, toRemove, employeeInDb: employee }
+
+log(employee)
+log(employee2)
+log(database)
+
+// ++++++ operations +++++++
+
+// access 
+// 1. [] 2. dot notation
+
+log(employee['name'])
+log(employee['age'])
+employee['describe']()
+
+// square bracket allows dynamic access
+// let key = 'name';
+// log(employee[key])
+
+// key = 'age'
+// log(employee[key])
+
+log(employee.name)
+log(employee.age)
+employee.describe()
+
+log('accessing employee through database')
+database.employeeInDb.describe()
+
+// modify content
+employee['name'] = 'Mary Doe'
+employee.age = 65;
+employee.hobbies.push('Sky Diving')
+
+employee.occupation = 'Software Developer';
+employee['job description'] = 'Builds the best softwares';
+
+log(employee)
+log(employee.describe())
+
+// delete
+delete employee['work-life'];
+delete employee['job description'];
+
+log(employee)
+
+// Objects are mutable 
+// Passed by referenced
+// When a new variable points to an object, a reference is used (shallow copy)
+log(database.employeeInDb)
+
+// fundamental types are immutable. Cannot be changed.
+let small = 1;
+let smaller = small;
+
+log(small, smaller);
+
+smaller = 3;
+
+log(small, smaller);
+
+let myStr = "Hello"
+let myStr2 = myStr;
+
+myStr2 += " World";
+
+log(myStr, myStr2)
+
+// shallow copying / passed by reference
+let cc = employee
+
+cc.age = 22;
+
+log(employee)
+log(database.employeeInDb)
+
+log(employee.hobbies)
+
+// passed by reference
+let hobbiesNew = employee.hobbies;
+
+hobbiesNew.push("Hiking")
+
+log(employee.hobbies)
+
+log(cc)
+log(database.employeeInDb)
+
+// Shallowing copying
+hobbiesNew = [].concat(employee.hobbies)
+hobbiesNew = [...employee.hobbies]
+
+log(employee.hobbies)
+
+hobbiesNew.push("silly something")
+
+log(employee.hobbies)
+log(hobbiesNew)
+
+// copy the employee using the spread operator
+let newData = { ...employee }
+
+log(newData)
+log(employee)
+
+newData.age = 34;
+newData.height = 1.234
+newData.name = "Peter Griffin"
+
+// remove Hiking
+newData.hobbies.pop()
+
+log(newData)
+log(employee)
+
+let newPerson = { name: "Johnson", hobbies: ['Playing', 'Singing'] };
+let newPersonCopy = structuredClone(newPerson)
+
+newPersonCopy.hobbies.pop()
+newPersonCopy.hobbies.pop()
+
+log(newPerson)
+log(newPersonCopy)
+
+// Full Copy
+newData = JSON.parse(JSON.stringify(employee))
+
+newData.hobbies.pop()
+newData.hobbies.pop()
+newData.hobbies.pop()
+
+log(employee)
+log(newData)
+
+// preventing modification
+Object.freeze(employee)
+// Object.seal
+
+employee.something = 34;
+delete employee.hobbies;
+
+log(employee)
+
+
+// destructuring 
+let { name, age: employeeAge, height, ...restProperties } = employee;
+
+log(name)
+log(employeeAge)
+log(height)
+log(restProperties)
+
+let { hobbies: [swimming, skiing, ...others] } = employee;
+
+log(swimming)
+log(skiing)
+log(others)
+
+log(database)
+
+let { employeeInDb: { hobbies } } = database
+
+// employeeInDb.describe()
+
+// Methods
+
+log(Object.keys(employee))
+log(Object.values(employee))
+log(Object.entries(employee))
+
+const ourEntries = [
+    ['name', 'Mary Doe'],
+    ['age', 22],
+    ['height', 1.86],
+    ['occupation', 'Software Developer']
+]
+
+log(Object.fromEntries(ourEntries))
+
+log(Object.fromEntries([[1, 2], [3, 4], [5, 6]]))
+
+// Check other object methods (5)
