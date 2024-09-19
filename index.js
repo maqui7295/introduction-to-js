@@ -349,6 +349,7 @@ for (var index = 0; index < arr.length; index++) {
     log(element)
 }
 
+
 log(index)
 
 
@@ -819,3 +820,157 @@ log(Object.fromEntries(ourEntries))
 log(Object.fromEntries([[1, 2], [3, 4], [5, 6]]))
 
 // Check other object methods (5)
+
+
+// Quick introduction to map and set
+// let all myFavoriteColors2.concat(myFavoriteColors)
+// const duplicateColors = [...myFavoriteColors, ...allColors, ...myFavoriteColors2]
+// log(duplicateColors)
+
+// // set creation
+// let emptySet = new Set()
+// let uniqueColors = new Set(duplicateColors)
+
+// log(emptySet)
+
+// duplicateColors.forEach(color => {
+//     emptySet.add(color)
+// })
+
+// log(uniqueColors)
+// log(emptySet)
+
+// // Check out the recent set methods
+
+// // Map
+// // creation
+const emptyMap = new Map();
+// log(emptyMap)
+
+// emptyMap.set('name', 'John Doe')
+// emptyMap.set('age', 45)
+
+// log(emptyMap)
+
+// log(emptyMap.get('name'))
+// log(emptyMap.get('age'))
+
+// emptyMap
+// uniqueColors
+
+// ======================================= CONTROL FLOW =================================
+
+
+// conditional statements
+// falsy values: "", 0, false, null, undefined, NaN
+// truthy values: everything else
+if (3 > 2) {
+    log("3 is indeed greater than 2")
+}
+
+if (10 < 4) {
+    log("10 is less than 4")
+} else {
+    log("10 is not less than 4")
+}
+
+
+const secretNumber = 142;
+
+if(secretNumber < 42) {
+    log(`Secret number ${secretNumber} is less than 42.`)
+} else if(secretNumber >= 42 && secretNumber <= 99) {
+    log(`Secret number ${secretNumber} is greater than or equal to 42`)
+} else if(secretNumber >= 100) {
+    log(`Secret number ${secretNumber} is greater than or equal to 100`)
+} else {
+    log("I probably don't know what you've typed")
+}
+
+// condition ? true part : false part
+
+// switch statement
+switch (secretNumber) {
+    case 10:
+        log(`Secret number is 10`);
+        break;
+    case 20:
+        log(`Secret number is 20`);
+        break;
+    case 30:
+        log(`Secret number is 30`);
+        break;
+    case 142:
+        log(`Secret number is 142`);
+        break;
+    default:
+        log("I don't know what that was")
+        break;
+}
+
+let kid = 1;
+let anotherKid = 2;
+
+switch (anotherKid) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        log("I am between 1 - 5 years")
+        break;
+        case 6:
+            log("I am 6 years old")
+            break;
+    default:
+        log("I am above 6 years")
+        break;
+}
+
+
+// 
+if(0) {
+    log("I ran")
+}
+
+// check for empty array
+// if (arr.length) {
+    
+// }
+
+// check for empty object
+// if (Object.keys(employee).length) {
+    
+// }
+
+// if(emptyMap.size) {
+
+// }
+
+const emptyObj2 = {};
+
+// This is false
+// if (emptyObj2 === {}) {
+    
+// }
+
+
+// LOOPING
+let counter = 1;
+
+while (counter <= 10) {
+
+    if (counter >= 5 && counter <= 8) {
+        // log(`Counter is clslooping at ${counter}`)
+        counter += 1;
+        continue
+    }
+
+    log(`Counter is ${counter}`)
+
+    if (counter == 9) break;
+
+    counter += 1;
+}
+
+// Javascript For Loops
