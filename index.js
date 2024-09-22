@@ -624,12 +624,12 @@ let employee = {
 
     describe: function () {
         log(`My name is ${this.name} and I am ${this.age} years old`);
-        log(`My hobbies are ${this.hobbies.join(' and ')}`)
+        log(`My hobbies are ${this?.hobbies?.join(' and ')}`)
     },
 
     describe2() {
         log(`My name is ${this.name} and I am ${this.age} years old`);
-        log(`My hobbies are ${this.hobbies.join(' and ')}`)
+        log(`My hobbies are ${this?.hobbies?.join(' and ')}`)
     },
 
     "work-life": "balanced"
@@ -877,11 +877,11 @@ if (10 < 4) {
 
 const secretNumber = 142;
 
-if(secretNumber < 42) {
+if (secretNumber < 42) {
     log(`Secret number ${secretNumber} is less than 42.`)
-} else if(secretNumber >= 42 && secretNumber <= 99) {
+} else if (secretNumber >= 42 && secretNumber <= 99) {
     log(`Secret number ${secretNumber} is greater than or equal to 42`)
-} else if(secretNumber >= 100) {
+} else if (secretNumber >= 100) {
     log(`Secret number ${secretNumber} is greater than or equal to 100`)
 } else {
     log("I probably don't know what you've typed")
@@ -919,9 +919,9 @@ switch (anotherKid) {
     case 5:
         log("I am between 1 - 5 years")
         break;
-        case 6:
-            log("I am 6 years old")
-            break;
+    case 6:
+        log("I am 6 years old")
+        break;
     default:
         log("I am above 6 years")
         break;
@@ -929,18 +929,18 @@ switch (anotherKid) {
 
 
 // 
-if(0) {
+if (0) {
     log("I ran")
 }
 
 // check for empty array
 // if (arr.length) {
-    
+
 // }
 
 // check for empty object
 // if (Object.keys(employee).length) {
-    
+
 // }
 
 // if(emptyMap.size) {
@@ -951,7 +951,7 @@ const emptyObj2 = {};
 
 // This is false
 // if (emptyObj2 === {}) {
-    
+
 // }
 
 
@@ -962,15 +962,152 @@ while (counter <= 10) {
 
     if (counter >= 5 && counter <= 8) {
         // log(`Counter is clslooping at ${counter}`)
-        counter += 1;
+        counter++;
         continue
     }
 
-    log(`Counter is ${counter}`)
+    log(`While: Counter is ${counter}`)
 
     if (counter == 9) break;
 
-    counter += 1;
+    counter++;
 }
 
 // Javascript For Loops
+for (let counter = 1; counter <= 10; counter++) {
+
+    if (counter >= 5 && counter <= 8) {
+        // log(`Counter is clslooping at ${counter}`)
+        counter++;
+        continue
+    }
+
+    log(`For: Counter is ${counter}`)
+
+    if (counter == 9) break;
+
+}
+
+counter = 1;
+
+for (; counter <= 10;) {
+
+    if (counter >= 5 && counter <= 8) {
+        // log(`Counter is clslooping at ${counter}`)
+        counter++;
+        continue
+    }
+
+    log(`For 2: Counter is ${counter}`)
+
+    if (counter == 9) break;
+
+    counter++;
+
+}
+
+counter = 0;
+
+// infinite loop
+while (true) {
+    counter++;
+    if (counter == 20) {
+        log(`Potentially Infinite While: Counter is now ${counter}`)
+        break;
+    }
+}
+
+counter = 0;
+
+for (;;) {
+    counter++;
+    if (counter == 20) {
+        log(`Potentially Infinite For: Counter is now ${counter}`)
+        break;
+    }
+}
+
+
+// 
+for (let index = 0; index < myFavoriteColors.length; index++) {
+    const color = myFavoriteColors[index];
+    log(color)
+}
+
+for (const color of myFavoriteColors) {
+    log(color);
+}
+
+// myFavoriteColors.forEach
+
+for (const letter of fullName) {
+    log(letter)
+}
+
+
+
+// for (const key in employee) {
+//     if (Object.prototype.hasOwnProperty.call(employee, key)) {
+//         let value = employee[key];
+//         if(typeof value === 'function') {
+//             value = value();
+//         }
+//         log(key, "=", value);
+//     }
+// }
+
+Object.entries(employee).forEach((entries) => {
+    let key = entries[0];
+    let value = entries[1];
+    log(key, "=", value);
+})
+
+// it works!
+Object.entries(employee).forEach(([key, value]) => {
+    log(key, "=", value);
+})
+
+
+// ================================== FUNCTIONS ====================================
+// A procedure
+// Avoid unnecessary repetitions
+// Give name to a group of code;
+
+
+// Built-in functions
+// User-defined functions
+
+// A number of javascript modules/objects contain functions (method)
+// e.g. Number, Math, Object, Array, String, Map, Set, etc
+
+log(`The sqrt root of 8 is ${Math.sqrt(8)}`)
+log(`Log base 10 of 1000 is ${Math.log10(1000)}`)
+
+// User-defined functions
+
+// usage before definition because of hoisting
+// let result = sum(7, 5);
+// log(result)
+
+// creation
+function sum(num1, num2) {
+    const result = num1 + num2;
+    return result;
+}
+
+sum2();
+
+// first-class objects
+// sum2 isn't hoisted
+let sum2 = function(num1, num2) {
+    const result = num1 + num2;
+    return result;
+}
+
+// usage
+result = sum(7, 5);
+log(result)
+
+// usage
+result = sum2(7, 5);
+log(result)
