@@ -1019,7 +1019,7 @@ while (true) {
 
 counter = 0;
 
-for (;;) {
+for (; ;) {
     counter++;
     if (counter == 20) {
         log(`Potentially Infinite For: Counter is now ${counter}`)
@@ -1095,11 +1095,11 @@ function sum(num1, num2) {
     return result;
 }
 
-sum2();
+// sum2(); sum2 is not hoisted
 
 // first-class objects
 // sum2 isn't hoisted
-let sum2 = function(num1, num2) {
+let sum2 = function (num1, num2) {
     const result = num1 + num2;
     return result;
 }
@@ -1111,3 +1111,112 @@ log(result)
 // usage
 result = sum2(7, 5);
 log(result)
+
+// Anonymous function
+
+// for example in IIFE
+log((function (a, b) {
+    return a + b;
+})(1, 2))
+
+function operation(num1, num2, callback) {
+    return callback(num1, num2);
+}
+
+result = operation(5, 5, sum)
+log(result);
+
+result = operation(5, 5, function (x, y) {
+    return x * y;
+});
+
+log(result);
+
+// arrow functions
+const multiply = (num1, num2) => {
+    return num1 * num2;
+}
+
+const printName = name => {
+    log(`Your name is ${name}`)
+}
+
+log(multiply(67, 5))
+printName('John Doe');
+
+result = operation(10, 10, (a, b) => a ** b)
+
+log(result)
+
+const multiply2 = (num1, num2) => num1 * num2;
+
+log(multiply2(10, 10))
+
+function sum(num1 = 0, num2 = 0) {
+    return num1 + num2;
+}
+
+result = sum();
+log(result);
+
+result = sum(5);
+log(result);
+
+result = sum(5, 5);
+log(result);
+
+function makePerson(name = "No name", age = 0) {
+    return { name, age };
+}
+
+log(makePerson());
+
+log(makePerson('John Doe'));
+log(makePerson('John Doe', 10));
+
+// variadic functions using rest operator ...
+function sum(...numbers) {
+    if (numbers.length > 15) {
+        throw new Error('The arguments should not exceed 15');
+    }
+
+    let total = 0;
+
+    numbers.forEach(n => total += n);
+
+    return total;
+
+}
+
+result = sum();
+
+log(result)
+
+result = sum(1, 2, 3, 4, 5)
+log(result)
+
+result = sum(1, 2, 3, 4, 5, 5, 6, 8)
+log(result)
+
+let numbers = Array(10);
+
+numbers.fill(0);
+
+numbers.forEach((_, index, arr) => {
+    arr[index] = index;
+})
+
+// try {
+//     result = sum(...numbers)
+//     log(result);
+// } catch (error) {
+//     log(error.message)
+// }
+
+result = sum(...numbers)
+log(result);
+log("program continues")
+
+
+// Errors
+const response = await fetch('http://127.0.0.1:8080')
