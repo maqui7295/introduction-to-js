@@ -1217,6 +1217,69 @@ result = sum(...numbers)
 log(result);
 log("program continues")
 
+// Errors 
 
-// Errors
-const response = await fetch('http://127.0.0.1:8080')
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+
+url = 'http://127.0.0.1:8080'
+
+// fetch(url).then((resp) => {
+//     log('Fetching response from server')
+//     resp.json().then(log)
+// }).catch(err => {
+//     log('Catching the error')
+//     log(err.message)
+// })
+
+async function getData(url2 = url) {
+    // Error handling one
+    try {
+        const response = await fetch(url2)
+        response.json().then(log)
+    } catch (error) {
+        log(error.message)
+    }
+}
+
+// asynchronous arrow function
+const getData2 = async (url2 = url) => {
+    try {
+        const response = await fetch(url2)
+        response.json().then(log)
+    } catch (error) {
+        log(error.message)
+    }
+}
+
+// getData();
+// getData2();
+// console.log("After getData() and getData2()")
+
+// see exercise2.js for more details
+
+// Promises
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+
+// Creating your errors
+function divide(num1, num2) {
+    if (num2 === 0) {
+        // const error = new Error(`You can't divide by zero`);
+        // throw error;
+
+        throw new Error(`You can't divide by zero`);
+    }
+
+    return num1 / num2;
+}
+
+
+divide(5, 3);
+
+try {
+    divide(4, 0);
+} catch (error) {
+    log(error.message)
+}
+
+

@@ -51,12 +51,18 @@ Object.keys(ITEMS).forEach(function (name) {
 let rl = readline.createInterface({ input, output });
 
 while (true) {
-  let age = await rl.question('Enter your age: ');
+  let age_str = await rl.question('Enter your age: ');
+
+  age_str = age_str.trim();
 
   // The buyer could input something silly
-  age = Number.parseInt(age);
+  let age = Number.parseInt(age_str);
 
   // 1. If the age is NaN, print the buyer input
+  if(Number.isNaN(age)) {
+    console.log(`You entered "${age_str}" instead of a number`)
+    continue;
+  }
   // Make sure the if(age >= 10) is never executed. 
   
   // This part should only execute if age integer is not NaN
